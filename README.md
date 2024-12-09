@@ -36,6 +36,7 @@ echo "GROQ_API_KEY=<your-api-key>" >> .env
 
 # Run individual test suites
 pytest llm/tests/test_llm.py
+pytest llm/tests/test_queryResult.py
 
 # Or run all tests
 pytest llm/tests/
@@ -61,3 +62,16 @@ With the following Edges:
 - Person -> Industry (WORKS_IN)
 - Person -> Country (LIVES_IN)
 - Person -> Company (WORKS_AT)
+
+## LLM workflow
+
+```bash
+We should return a list of lists of strings, containing the triplets in the format ["Person", RELATION, ENTITY].
+By doing this in strict json, we can prove that the LLM is returning the correct format, and besides we have already proven that once the graph recieves its triplets in the strict
+queryResult data structure, it always works.
+
+Thus, in isolation, we have proven that both networkX can easily be queried with graph friendly data model API Queries, and the LLM can easily produce this from natural language, meaning we need only synthesise the two components to build the end to end knowledge graph from here. This spearation of concerns allows us to adhere to the principles of Test Driven Development and move faster.
+```
+
+
+

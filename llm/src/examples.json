@@ -1,0 +1,27 @@
+{
+    "examples": [
+        {
+            "query": "Find people who work at Microsoft and speak English",
+            "triplets": [
+                ["Person", "WORKS_AT", "Microsoft"],
+                ["Person", "SPEAKS", "English"]
+            ]
+        },
+        {
+            "query": "Show me software engineers in the USA who studied at Stanford",
+            "triplets": [
+                ["Person", "WORKS_IN", "Software"],
+                ["Person", "LIVES_IN", "USA"],
+                ["Person", "STUDIED_AT", "Stanford"]
+            ]
+        },
+        {
+            "query": "Find Arabic speaking developers who work at Google",
+            "triplets": [
+                ["Person", "SPEAKS", "Arabic"],
+                ["Person", "WORKS_AT", "Google"],
+                ["Person", "WORKS_IN", "Software"]
+            ]
+        }
+    ]
+} 

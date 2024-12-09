@@ -1,0 +1,25 @@
+{
+  "query": "Find me software engineers who work at Google and speak English",
+  "response": {
+    "query": {
+      "conditions": "Convert this natural language query into knowledge graph triplets.\nEach triplet represents a relationship in the format: [\"Person\", RELATION_TYPE, ENTITY_VALUE]\n\nQuery: Find me software engineers who work at Google and speak English\n\nAvailable Entity Types:\n{\n  \"company\": \"Company names like Apple Inc., Alphabet Inc, Tesla, Microsoft, etc.\",\n  \"university\": \"University names like Harvard, MIT, Stanford, etc.\",\n  \"languages\": \"Languages like English, Spanish, French, etc.\",\n  \"industry\": \"Industry names like Technology, Finance, software, Healthcare, etc.\",\n  \"country\": \"Country names like USA, UK, France, etc.\"\n}\n\nAvailable Relationship Types:\n{\n  \"works_at\": \"Connects a Person to their Company\",\n  \"studied_at\": \"Connects a Person to their University\",\n  \"speaks\": \"Connects a Person to Languages they speak\",\n  \"works_in\": \"Connects a Person to their Industry\",\n  \"lives_in\": \"Connects a Person to their Country\"\n}\n\nExamples:\n[\n  {\n    \"query\": \"Find people who work at Microsoft and speak English\",\n    \"triplets\": [\n      [\n        \"Person\",\n        \"WORKS_AT\",\n        \"Microsoft\"\n      ],\n      [\n        \"Person\",\n        \"SPEAKS\",\n        \"English\"\n      ]\n    ]\n  },\n  {\n    \"query\": \"Show me software engineers in the USA who studied at Stanford\",\n    \"triplets\": [\n      [\n        \"Person\",\n        \"WORKS_IN\",\n        \"Software\"\n      ],\n      [\n        \"Person\",\n        \"LIVES_IN\",\n        \"USA\"\n      ],\n      [\n        \"Person\",\n        \"STUDIED_AT\",\n        \"Stanford\"\n      ]\n    ]\n  },\n  {\n    \"query\": \"Find Arabic speaking developers who work at Google\",\n    \"triplets\": [\n      [\n        \"Person\",\n        \"SPEAKS\",\n        \"Arabic\"\n      ],\n      [\n        \"Person\",\n        \"WORKS_AT\",\n        \"Google\"\n      ],\n      [\n        \"Person\",\n        \"WORKS_IN\",\n        \"Software\"\n      ]\n    ]\n  }\n]\n\nCRITICAL INSTRUCTIONS:\n1. Output MUST be a JSON array of triplets ONLY\n2. Each triplet must be exactly [\"Person\", RELATION, ENTITY_VALUE]\n3. Subject is always \"Person\"\n4. Relations must be one of: WORKS_AT, STUDIED_AT, SPEAKS, WORKS_IN, LIVES_IN\n5. Entity values must be the actual names/values from the query that match the relation:\n   - WORKS_AT \u2192 use actual company name (e.g., \"Google\", not \"company\")\n   - STUDIED_AT \u2192 use actual university name (e.g., \"Stanford\", not \"university\")\n   - SPEAKS \u2192 use actual language name (e.g., \"English\", not \"languages\")\n   - WORKS_IN \u2192 use actual industry name (e.g., \"Software\", not \"industry\")\n   - LIVES_IN \u2192 use actual country name (e.g., \"USA\", not \"country\")\n6. No explanations or additional text - only the JSON array\n7. All conditions in the query must be captured as separate triplets\n8. Use exact entity names as they appear in the query\n9. Invalid responses will cause system errors\n10. The response must be valid JSON and parseable\n\nExample Response Format:\n[\n    [\"Person\", \"WORKS_AT\", \"Google\"],\n    [\"Person\", \"SPEAKS\", \"English\"],\n    [\"Person\", \"WORKS_IN\", \"Software\"]\n]\n\n<RESPONSE>"
+    },
+    "response": [
+      [
+        "Person",
+        "works_at",
+        "Google"
+      ],
+      [
+        "Person",
+        "speaks",
+        "English"
+      ],
+      [
+        "Person",
+        "works_in",
+        "Software"
+      ]
+    ]
+  }
+}
