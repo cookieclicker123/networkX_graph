@@ -17,7 +17,7 @@ pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-## Running the Tests
+## Running the Graph Test
 
 ```bash
 # Run individual test suites
@@ -25,6 +25,20 @@ pytest tests/test_graph.py
 
 # Or run all tests
 pytest test/
+```
+
+## Running the LLM Test
+
+```bash
+#Retrieve free API key from Groq console by signing up
+touch .env
+echo "GROQ_API_KEY=<your-api-key>" >> .env
+
+# Run individual test suites
+pytest llm/tests/test_llm.py
+
+# Or run all tests
+pytest llm/tests/
 ```
 
 ## Technical Details
